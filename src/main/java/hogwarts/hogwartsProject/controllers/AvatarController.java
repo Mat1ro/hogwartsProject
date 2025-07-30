@@ -1,5 +1,6 @@
 package hogwarts.hogwartsProject.controllers;
 
+import hogwarts.hogwartsProject.models.Avatar;
 import hogwarts.hogwartsProject.services.AvatarService;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/avatar")
@@ -49,5 +51,11 @@ public class AvatarController {
         return ResponseEntity.ok()
                 .contentType(MediaType.IMAGE_JPEG)
                 .body(new ByteArrayResource(data));
+    }
+
+    @GetMapping()
+    public ResponseEntity<List<Avatar>> getAllAvatars(@RequestParam Integer page, @RequestParam Integer size) {
+        List<Avatar> avatars = avatarService.getAllAvatars(page, size);
+        return ResponseEntity.ok(avatars);
     }
 }
