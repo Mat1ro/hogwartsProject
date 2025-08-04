@@ -83,4 +83,23 @@ public class StudentService {
         logger.info("Was invoked method for get last students");
         return studentRepository.getLastStudents();
     }
+
+    public List<String> getAllNamesStudents() {
+        logger.info("Was invoked method for get all names students");
+        List<Student> students = studentRepository.findAll();
+        return students.stream()
+                .filter(s -> s.getName().startsWith("А"))
+                .map(s -> s.getName().toUpperCase())
+                .sorted()
+                .toList();
+    }
+
+    public Double getAvgAgeStudentsByStream() {
+        logger.info("Was invoked method for get average age student by stream");
+        List<Student> students = studentRepository.findAll();
+        return students.stream()
+                .mapToInt(s -> s.getAge())
+                .average()
+                .orElse(0.0);
+    }
 }

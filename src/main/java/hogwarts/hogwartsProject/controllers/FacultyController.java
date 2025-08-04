@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.LongStream;
 
 @RestController
 @RequestMapping(path = "/faculty")
@@ -75,6 +76,19 @@ public class FacultyController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(students);
+    }
+
+    @GetMapping("/l-name")
+    public ResponseEntity<String> getLongestFacultyName() {
+        return ResponseEntity.ok(facultyService.getLongestFacultyName());
+    }
+
+    @GetMapping("/summ")
+    public ResponseEntity<Long> getSomeNum() {
+        long sum = LongStream.rangeClosed(1, 1_000_000)
+                .parallel()
+                .sum();
+        return ResponseEntity.ok(sum);
     }
 }
 
