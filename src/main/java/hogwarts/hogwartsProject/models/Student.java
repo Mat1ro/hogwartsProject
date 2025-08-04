@@ -1,6 +1,7 @@
 package hogwarts.hogwartsProject.models;
 
 import jakarta.persistence.*;
+
 import java.util.Objects;
 
 
@@ -72,5 +73,13 @@ public class Student {
     @Override
     public int hashCode() {
         return Objects.hash(name, age);
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
     }
 }

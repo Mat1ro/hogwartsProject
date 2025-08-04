@@ -68,4 +68,12 @@ public class Faculty {
     public int hashCode() {
         return Objects.hash(name, color);
     }
+
+    @Override
+    public String toString() {
+        return "Faculty{" +
+                "name='" + name + '\'' +
+                ", color='" + color + '\'' +
+                '}';
+    }
 }
