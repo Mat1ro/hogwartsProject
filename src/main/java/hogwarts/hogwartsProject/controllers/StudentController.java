@@ -112,4 +112,14 @@ public class StudentController {
         return ResponseEntity.ok(studentService.getAvgAgeStudentsByStream());
     }
 
+    @GetMapping("/print-parallel")
+    public void getNamesStudentsInConsole() {
+        studentService.getNameStudentsByThreads();
+    }
+
+    @GetMapping("/print-synchronized")
+    public void getNamesStudentsInConsoleSynchro() {
+        studentService.getNameStudentsByThreadsSynchro();
+    }
+
 }
